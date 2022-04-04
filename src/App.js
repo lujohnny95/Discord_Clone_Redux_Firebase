@@ -1,13 +1,34 @@
+import React, { useEffect } from "react";
 import Chat from "./components/Chat/Chat";
 import Sidebar from "./components/Sidebar/Sidebar" 
-import "./App.css";
-import { useSelector } from "react-redux";
-import { selectUser } from "./features/userSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { selectUser, login, logout } from "./features/userSlice";
 import Login from "./Login/Login";
+import "./App.css";
+import { auth } from "./firebase";
 
 function App() {
-  // pulling the user from userslice
+  const dispatch = useDispatch();
   const user = useSelector(selectUser);
+
+  useEffect(() => {
+    auth.onAuthStateChanged((authUser) => {
+      if (authUser) {
+        //logged in
+        dispatch(
+          login({
+            uid: authUser.uid,
+            photo: authUser.photoURL,
+            email: authUser.email,
+            displayName: authUser.displayName,
+          })
+        );
+      } else {
+        //logged out
+        dispatch(logout());
+      }
+    });
+  }, [dispatch]);
 
   return (
     <div className="app">
@@ -17,7 +38,7 @@ function App() {
           <Chat />
         </>
       ) : (
-        <Login />
+          <Login />
       )}
     </div>
   );
