@@ -4,7 +4,7 @@ import "./Message.css"
 const Message = ({ timestamp, user, message }) => {
   return (
     <div className='message'>
-        <Avatar />
+        <Avatar src={user.photo} />
         <div className='message-info'>
             <h4>
                 {user.displayName}
@@ -13,7 +13,7 @@ const Message = ({ timestamp, user, message }) => {
                 </span>
             </h4>
 
-            <p>This is my message</p>
+            <p>{message}</p>
         </div>
     </div>
   )

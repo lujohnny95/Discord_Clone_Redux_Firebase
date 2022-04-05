@@ -17,9 +17,9 @@ const SidebarChannel = ({ id, channelName }) => {
         )
       } 
     >
-        <h4>
-            <span className='sidebarChannel-hash'>#</span>{channelName}
-        </h4>
+      <h4>
+          <span className='sidebarChannel-hash'>#</span>{channelName}
+      </h4>
     </div>
   )
 }

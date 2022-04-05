@@ -12,10 +12,10 @@ const Sidebar = () => {
   const [channels, setChannels] = useState([]);
 
   useEffect(() => {
-    db.collection("channels").onSnapshot(snapshot => {
-      setChannels(snapshot.docs.map(doc => ({
+    db.collection("channels").onSnapshot((snapshot) => {
+      setChannels(snapshot.docs.map((doc) => ({
         id: doc.id,
-        channel: doc.data()
+        channel: doc.data(),
       }))
       )
     })
@@ -38,7 +38,7 @@ const Sidebar = () => {
             <ExpandMore />
         </div>
         {/* sidebar channels section */}
-        <div className="sidebar-channel">
+        <div className="sidebar-channels">
           <div className="sidebar-channelsHeader">
             <div className="sidebar-header">
               <ExpandMore />
@@ -48,11 +48,12 @@ const Sidebar = () => {
           </div>
 
           <div className="sidebar-channelsList">
-            {channels.map((channel, id) => (
+            {channels.map(({ id, channel }) => (
               <SidebarChannel key={id} id={id} channelName={channel.channelName} />
             ))}
           </div>
         </div>
+
         {/* voice section */}
         <div className="sidebar-voice">
           <SignalCellularAlt className="sidebar-voiceIcon" fontSize="large" />
@@ -68,7 +69,7 @@ const Sidebar = () => {
 
         {/* sidebar profile */}
         <div className="sidebar-profile">
-          <Avatar src={user.photo} onClick={() => auth.signOut()} />
+          <Avatar classname="avatar" src={user.photo} onClick={() => auth.signOut()} />
           <div className="sidebar-profileInfo">
             <h3>{user.displayName}</h3>
             <p>#{user.uid}</p>

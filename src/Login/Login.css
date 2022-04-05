@@ -10,14 +10,15 @@
     background-color: #738adb;
     color: #eff2f5;
     font-weight: 800;
+    padding: 10px;
 }
 
 .login > button:hover {
-    background-color: gray;
+    background-color: blueviolet;
     color: #738adb;
 }
 
 .login > div > img {
     object-fit: contain;
-    height: 150px;
+    height: 250px;
 }
