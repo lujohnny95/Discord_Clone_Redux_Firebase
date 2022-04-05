@@ -3,7 +3,7 @@ import "firebase/compat/auth";
 import "firebase/compat/firestore";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyAl4v8SzvHYWd6nmHmVwFBW34yz2zD6nFg",
+    apiKey: process.env.FIREBASE_CONFIG_API_KEY,
     authDomain: "discord-clone-9cfea.firebaseapp.com",
     projectId: "discord-clone-9cfea",
     storageBucket: "discord-clone-9cfea.appspot.com",
