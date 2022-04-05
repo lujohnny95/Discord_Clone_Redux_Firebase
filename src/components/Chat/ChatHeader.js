@@ -1,13 +1,13 @@
 import { EditLocationRounded, HelpRounded, Notifications, PeopleAltRounded, SearchRounded, SendRounded } from "@material-ui/icons";
 import "./ChatHeader.css";
 
-const ChatHeader = () => {
+const ChatHeader = ({ channelName }) => {
   return (
     <div className="chatHeader">
         <div className="chatHeader-left">
             <h3>
                 <span className="chatHeader-hash">#</span>
-                Test Channel Name
+                {channelName}
             </h3>
         </div>
 
